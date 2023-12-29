@@ -1,4 +1,4 @@
-# Sephora Price Prediction Model💡
+# Sephora Price Prediction Model💄
 
 As an avid beauty lover, I am interested in uncovering the underlying factors that influence the pricing of beauty items, ranging from brand names, ratings, and beauty category. This could predict actionable insights to improve customer satisfaction and pricing structures for beauty products on Sephora's platform. 
 
