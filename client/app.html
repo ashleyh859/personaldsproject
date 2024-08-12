@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sephora Price Prediction</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch categories and brands
+            fetch('/get_category_names')
+                .then(response => response.json())
+                .then(data => {
+                    const dropdown = document.getElementById('category');
+                    data.categories.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category;
+                        option.textContent = category;
+                        dropdown.appendChild(option);
+                    });
+                });
+
+            fetch('/get_brands')
+                .then(response => response.json())
+                .then(data => {
+                    const dropdown = document.getElementById('brand');
+
+                    data.brands.sort();
+
+                    data.brands.forEach(brand => {
+                        const option = document.createElement('option');
+                        option.value = brand;
+                        option.textContent = brand;
+                        dropdown.appendChild(option);
+                    });
+                });
+        });
+    </script>
+    <script>
+    function updateRatingValue(value) {
+    const slider = document.getElementById('rating');
+    const valueDisplay = document.getElementById('rating-value');
+
+    // Update the displayed value
+    valueDisplay.textContent = parseFloat(value).toFixed(2);
+
+    // Calculate the position of the value display
+    const sliderWidth = slider.offsetWidth;
+    const min = parseFloat(slider.min);
+    const max = parseFloat(slider.max);
+    const relativeValue = (value - min) / (max - min);
+
+    // Calculate the width of the thumb (typically around 20px, but adjust as needed)
+    const thumbWidth = 20;
+
+    // Adjust the left position based on the slider's width and thumb width
+    const offset = sliderWidth * relativeValue - valueDisplay.offsetWidth / 2 + thumbWidth / 2;
+    valueDisplay.style.left = `${offset}px`;
+}
+</script>
+
+    <link rel="stylesheet" href="/static/app.css?v=1.0">
+
+
+
+</head>
+<body>
+    <h2>BeautyInsights</h2>
+
+    <h1>Predict the Price of Your Desired Product at Sephora</h1>
+
+    <div class="main-container">
+        <div class="image-container">
+            <img src="/static/set-cosmetics.png" alt="Set of Cosmetics">
+        </div>
+
+        <div class="form-container">
+
+            <form id="prediction-form">
+                <label for="category" class="form-label">Select the Product Category</label>
+                <select id="category" name="category" required>
+                    <option value="">Select your Desired Product Category</option>
+                </select>
+                <br><br>
+
+                <label for="brand" class="form-label">Select the Product Brand</label>
+                <select id="brand" name="brand" required>
+                    <option value="">Select your Desired Product Brand</option>
+                </select>
+                <br><br>
+
+                <label for="rating" class="form-label">Select the Desired Product Rating</label>
+                <div class="slider-container">
+                    <input type="range" id="rating" name="rating" min="1.00" max="5.00" step="0.01" value="3.00" oninput="updateRatingValue(this.value)" class="slider" required>
+                    <span id="rating-value" class="value-display">3.00</span>
+                    <div class="slider-labels">
+                        <span>1</span>
+                        <span>5</span>
+                    </div>
+                </div>
+                <br><br>
+
+
+                <button type="submit">Predict Price</button>
+            </form>
+        </div>
+    </div>
+    <div id="result" class="results" style="display: none;"></div>
+
+
+
+         <script>
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const rating = document.getElementById('rating').value;
+            const category = document.getElementById('category').value;
+            const brand = document.getElementById('brand').value;
+
+            fetch('/predict_price', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ rating, category, brand })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show the result div and display the predicted price
+                const resultDiv = document.getElementById('result');
+                resultDiv.textContent = `Predicted Price of Your Desired Product: $${data.estimated_price}`;
+                resultDiv.style.display = 'flex'; // Show the result div
+            })
+            .catch(error => {
+                // Handle errors (e.g., network issues, server errors)
+                console.error('Error:', error);
+                const resultDiv = document.getElementById('result');
+                resultDiv.textContent = 'An error occurred while predicting the price. Please try again.';
+                resultDiv.style.display = 'flex'; // Show the result div even if there is an error
+            });
+        });
+    </script>
+</body>
+</html>

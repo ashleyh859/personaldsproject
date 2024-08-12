@@ -1,0 +1,182 @@
+/* app.css */
+
+/* Center and style the title */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+
+body {
+    padding: 0px;
+    margin-top:40px;
+    font-family:DM Sans, sans-serif;
+    font-weight:300;
+    background-color: rgb(255, 255, 255);
+    color:black;
+    justify-content: center;
+    align-items:center;
+    margin-bottom:150px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color:white;
+    margin-left:275px;
+    margin-right:275px;
+    border-radius: 60px;
+    background-color:#285c93;
+    padding-top:16px;
+    padding-bottom:16px;
+    letter-spacing:2px;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color:black;
+}
+
+
+/* Main container to split image and form */
+.main-container {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items:center;
+    margin-left:275px;
+    margin-right:275px;
+}
+
+/* Style for image container */
+.image-container {
+    flex: 1;
+    align-items:center;
+    justify-content: center;
+}
+
+/* Style for image */
+.image-container img {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+}
+
+/* Style for form container */
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Style for form labels */
+.form-label {
+    font-size: 16px;
+    color: black;
+    margin-bottom:6px;
+}
+
+/* Style for default option in select elements */
+select option[disabled] {
+    color: gray;
+}
+
+/* Style for select elements */
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 17px;
+    color:#808080;
+    margin-bottom: 0px;
+    border: 1px solid #F5F5F5;
+    border-radius: 8px;
+    background-color:#F5F5F5;
+    text-transform: capitalize;
+    font-family:DM Sans, sans-serif;
+}
+
+select option {
+    background-color: white; /* Ensure options have a white background */
+    color: black; /* Ensure options have black text */
+    text-transform: capitalize;
+}
+
+/* Style for sliders */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+     position: relative;
+     margin-top:20px;
+     width:100%;
+}
+
+.slider {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.slider-labels span {
+    font-size: 15px;
+    color: #333;
+}
+
+.value-display {
+    position: absolute;
+    top: -30px; /* Adjust this value to position it above the slider */
+    font-size: 15px;
+    background-color: white;
+    padding: 5px;
+    /* Center the value display horizontally */
+    left: 50%;
+    transform: translateX(-50%);
+    color:blue;
+}
+
+/* Style for submit button */
+button {
+    background-color: white;
+    color: black;
+    border: 1px solid #D3D3D3;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    color: red;
+    border: 1px solid red;
+}
+/* Additional styling to improve form layout */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.results {
+    justify-content: center;
+    align-items:center;
+    margin-left:275px;
+    margin-right:275px;
+    margin-top:25px;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:black;
+    background-color:#CEDFF1;
+    border-radius: 8px;
+    font-size:17px;
+
+}
