@@ -4,7 +4,12 @@ As an avid beauty lover, I am interested in uncovering the underlying factors th
 
 As a result, I developed a function, predict_price(rating, primary_category, brand_name), for predicting product prices based on the selected variables. The function incorporates the trained model's coefficients and utilizes the provided input values for rating, primary category, and brand name.
 
-Key Skills Used: Feature Engineering/Selection with Dummy Variables, Hypothesis Testing with Permutations, Train/test set, Residuals, Multicollinearity, Hyperparameter Tuning with GridSearchCV, Multi-Linear Regression Model, K-Fold Cross Validation, RMSE, and Predictive Modeling Function.
+In addition to building the predictive model, I developed a web application to interact with the model using Flask, HTML, CSS, and JavaScript. This user-friendly interface allows users to select a beauty category, brand name, and rating to predict the price of Sephora products. The app communicates with the Flask server to retrieve predictions from the trained model. For demonstration purposes, I have created a GIF showcasing the functionality of the web app, highlighting its ease of use and real-time interaction with the model.
+
+![App Demo](sephorapriceappdemo.gif)
+
+Key Skills Used: Feature Engineering/Selection with Dummy Variables, Hypothesis Testing with Permutations, Train/test set, Residuals, Multicollinearity, Hyperparameter Tuning with GridSearchCV, Multi-Linear Regression Model, K-Fold Cross Validation, RMSE, Predictive Modeling Function, Full-Stack Development (Flask for Server side, HTML, CSS, & Javascript)
+
 
 Below are the files needed to access my project. 
 
